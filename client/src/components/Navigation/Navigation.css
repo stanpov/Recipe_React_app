@@ -26,10 +26,10 @@
 
 .navigation_div ul li a {
     text-decoration: none;
-    color: #fff;
+    color:goldenrod;
     font-family: 'Indie Flower', cursive;
     
 }
 .navigation_div ul li a:hover {
-    color: goldenrod;
+    color: #fff;
 }
