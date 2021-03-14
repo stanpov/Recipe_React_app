@@ -74,6 +74,9 @@ color: goldenrod;;
 .submit_btn:hover {
     border: none;
 }
+.submit_btn:focus {
+  outline: none;
+}
 
 @-webkit-keyframes submit_btn {
     16.65% {
