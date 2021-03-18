@@ -1,0 +1,140 @@
+
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+   
+
+}
+
+.login_inputs {
+    width: 300px;
+    padding: 5px;
+    font-size: 30px;
+    margin-top: 3px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+.login_form > input {
+    font-family: 'Londrina Shadow', cursive;
+    color: black;
+    font-weight: bolder;
+    width: 300px;
+    margin: 0 auto;
+    padding: 3px;
+}
+ 
+.login_form > input:placeholder-shown {
+    font-family: 'Londrina Shadow', cursive;
+    color: black;
+    font-weight: bolder;
+}
+
+.login_inputs { 
+    padding: 8px;
+    font-size: 25px;
+    font-weight: bold;
+    color: goldenrod;;
+}
+
+.login_h1 {
+    font-size: 80px;
+    font-family: 'Londrina Shadow', cursive;
+    color: goldenrod;
+}
+
+.login_btn {
+    display: flex;
+    margin: 35px auto;
+   width: 100px;
+   justify-content: center;
+    padding: 10px;
+    font-size: 20px;
+    font-style: italic;
+    background-color: goldenrod;
+    border: none;
+    border-radius: 45%;
+    font-weight: bold;
+}
+
+.login_btn:hover {
+    border: none;
+}
+.login_btn:focus {
+  outline: none;
+}
+
+@-webkit-keyframes login_btn {
+    16.65% {
+      -webkit-transform: translateY(8px);
+      transform: translateY(8px);
+    }
+    33.3% {
+      -webkit-transform: translateY(-6px);
+      transform: translateY(-6px);
+    }
+    49.95% {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+    }
+    66.6% {
+      -webkit-transform: translateY(-2px);
+      transform: translateY(-2px);
+    }
+    83.25% {
+      -webkit-transform: translateY(1px);
+      transform: translateY(1px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @keyframes login_btn {
+    16.65% {
+      -webkit-transform: translateY(8px);
+      transform: translateY(8px);
+    }
+    33.3% {
+      -webkit-transform: translateY(-6px);
+      transform: translateY(-6px);
+    }
+    49.95% {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+    }
+    66.6% {
+      -webkit-transform: translateY(-2px);
+      transform: translateY(-2px);
+    }
+    83.25% {
+      -webkit-transform: translateY(1px);
+      transform: translateY(1px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  .login_btn {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .login_btn:hover, .login_btn:focus, .login_btn:active {
+    -webkit-animation-name: login_btn;
+    animation-name: login_btn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+  }
+  .login_btn:hover {
+      cursor: pointer;
+  }
+

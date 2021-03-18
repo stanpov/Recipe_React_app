@@ -1,0 +1,13 @@
+.site-info {
+    font-size: 70px;
+    color: goldenrod;
+    font-weight: unset;
+    font-style: italic;
+    font-family: 'Londrina Shadow', cursive;
+}
+.app_info_for_users {
+    margin-top: 50px;
+    padding-bottom:  40px;
+    font-size: 30px;
+    font-style: italic;
+}

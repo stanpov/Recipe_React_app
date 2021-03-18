@@ -1,35 +1,41 @@
-.navigation_div {
-    
-    background-color: black;
-    opacity: 0.7;
-    border-radius: 0 50% 50% 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 200px;
-    text-align: center;
-    justify-content: center;
-    
-}
-.navigation_div ul li {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    font-size: 30px;
-    margin: 0 auto;
-   
-    
-    
-}
 
-.navigation_div ul li a {
-    text-decoration: none;
-    color:goldenrod;
+
+.nav {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: black;
+    border-radius: 0px 0px 50px 50px;
+    opacity: 0.8;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    align-items: center;
+  margin-bottom: 50px;
+}
+.nav-item {
+    margin: 0 auto;
+    justify-content: space-between;
+    
+}
+.nav-link {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
     font-family: 'Indie Flower', cursive;
     
 }
+.nav-link:hover {
+    color: goldenrod;
+}
+.nav-img {
+    width: 70px;
+    height: 40px;
+}
+
+
+
+
 .navigation_div ul li a:hover {
     color: #fff;
 }
+

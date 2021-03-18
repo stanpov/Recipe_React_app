@@ -1,0 +1,10 @@
+POST  http://localhost:5000/recepies/create
+Content-Type: application/json 
+
+# {
+    
+#     "title": "loshia@abv.bg",
+#     "description": "123123",
+    
+    
+# }

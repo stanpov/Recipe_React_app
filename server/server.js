@@ -4,14 +4,20 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const config = require('./config/configuration');
-const userController = require('./router/userRouter')
+const userRouter = require('./router/userRouter')
+const recepiRouter = require('./router/recepiRouter')
+
 dotenv.config()
 
 mongoose.connect(process.env.DATABASE_CONNECTION,{useCreateIndex: true, useUnifiedTopology: true,useNewUrlParser: true },console.log('Connected to DB successfully.'))
 
-app.use(express.json({extended:true}))
-app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cors());
 
-app.use('/user',userController)
+
+
+app.use('/user',userRouter);
+app.use('/recepies',recepiRouter)
 
 app.listen(config.port,console.log('Server is listenning now....'))
