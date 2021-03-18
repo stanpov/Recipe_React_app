@@ -17,10 +17,10 @@ router.get('/all',async(req,res)=>{
 
 router.post('/create',async(req,res)=>{
     //  const {title,description} = req.body
-     let title = "Pizza"
-     let description = "this is the our pizza"
-     let imageUrl = "https://i.pinimg.com/originals/77/35/dd/7735dd49ea9f5908da97618e43a4d510.jpg";
-     let creator = "Nikolai Prergeloviq"
+     let title = "Makaroni"
+     let description = "this is makaroni info,this is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni info"
+     let imageUrl = "https://s.rozali.com/p/m/a/makaroni-sirene-25830-500x334.jpg";
+     let creator = "Yavor"
 
     
     try {

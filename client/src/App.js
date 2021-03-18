@@ -6,7 +6,9 @@ import Home from './components/HomePage/Home';
 import Register from './components/RegisterPage/Register';
 import Login from './components/LoginPage/Login';
 import RecepiesPage from './components/RecepiesPage/RecepiesPage';
-import About from './components/About/About'
+import About from './components/About/About';
+import RepiceDetailsPage from './components/RecipeDetailsPage/RecipeDetailsPage'
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path="/about" exact>
           <About />
         </Route>
+        <Route path="/recepi" component={RepiceDetailsPage}></Route>
       </Switch>
       
     </div>

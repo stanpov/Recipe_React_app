@@ -1,0 +1,145 @@
+input[type="text"] { 
+    outline: none;
+  }
+  
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f3f3f3 inset;
+    -webkit-text-fill-color: #2c3e50 !important;
+  }
+  
+  /******** RECIPE.js ********/
+  
+  .active-recipe {
+    display: flex;
+    flex-direction: row;
+    
+    width: 100%;
+    
+  }
+  
+  .active-recipe__img {
+    margin-top: 20px;
+    height: 500px;
+    width: 600px;
+   
+  }
+
+  .active-recipe-info {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+        margin-left: 120px;
+      width: 300px;
+      background-color: #f3f3f3;
+      color: black;
+      margin-top: 20px;
+  }
+  
+  .active-recipe__title {
+    font-family: 'Londrina Shadow', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 40px;
+    
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    margin: 20px auto;
+  }
+  .title_name {
+      font-size: 50px;
+      font-weight: bold;
+  }
+  
+  .active-recipe__description {
+      border: 1px solid black;
+      margin-left: 10px;
+      text-align: left;
+      overflow: auto;
+      height: 190px;
+        font-size: 20px; 
+        font-weight: normal; 
+        font-style: italic;
+        margin-bottom: 10px;
+  }
+  .active-recipe__button__comment {
+    background-color:#e4e6eb;
+    margin-right: 10px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 18px;
+    width: 40px;
+    font-family: 'Londrina Shadow', cursive;
+    margin-left: 80px;
+    padding: 1px 2px 2px 0px;
+  }
+  
+  .active-recipe__show {
+      margin-top: 20px;
+      font-size: 23px;
+  }
+  
+  .active-recipe__likes {
+        font-size: 20px;
+        
+  }
+  .active-recipe__comments {
+    font-size: 20px;
+    
+  }
+  .likes_numbers {
+      font-weight: bold;
+  }
+  .comments_numbers {
+    font-weight: bold;
+  }
+  
+  .active-recipe__button__like {
+    background-color: #e4e6eb;
+    margin-right: 10px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 50%;
+    font-size: 18px;
+    width: 40px;
+    padding: 5px 5px 8px 5px;
+    
+
+    
+  }
+
+  .active-recipe__button__like:hover {
+      color: blue;
+  }
+  .active-recipe__button__comment:hover {
+    color: blue;
+  }
+
+  .like_text {
+    font-family: 'Londrina Shadow', cursive;
+  }
+
+  .active-recipe__rank {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: 20px;
+      margin-right: 22px;
+  }
+  .active-recipe-like-dislike {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0 auto;
+      
+      
+  }
+
+
+  .active-recipe__button__like:focus{
+    
+    outline: none;
+  }
+
+ 
+  
