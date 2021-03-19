@@ -16,10 +16,8 @@ router.get('/all',async(req,res)=>{
 })
 
 router.post('/create',async(req,res)=>{
-    //  const {title,description} = req.body
-     let title = "Makaroni"
-     let description = "this is makaroni info,this is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni infothis is makaroni info"
-     let imageUrl = "https://s.rozali.com/p/m/a/makaroni-sirene-25830-500x334.jpg";
+     const {title,description,imageUrl} = req.body
+    
      let creator = "Yavor"
 
     

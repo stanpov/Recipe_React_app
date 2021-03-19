@@ -1,0 +1,56 @@
+.create-recepi-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.create-recepi-lateb {
+    font-size: 30px;
+    color: goldenrod;
+    font-weight: bold;
+}
+.create-recepi-input {
+    width: 300px;
+    margin: 0 auto;
+    
+    font-size: 20px;
+    font-weight: bold;
+   
+}
+.create-recepi-header {
+    font-family: 'Londrina Shadow', cursive;
+    color: goldenrod;
+    font-size: 50px;
+}
+textarea {
+    height: 200px;
+    resize: none;
+  }
+  .create-recepi-btn {
+    margin-bottom: 20px;
+    
+    width: 100px;
+    justify-content: center;
+    padding: 10px;
+    font-size: 20px;
+    font-style: italic;
+    background-color: goldenrod;
+    border: none;
+    border-radius: 45%;
+    font-weight: bold;
+    
+  }
+  .create-recepi-btn:hover {
+      color: #fff;
+  }
+
+  textarea:focus {
+      outline: none;
+  }
+  .create-recepi-input:focus {
+      outline: none;
+  }
+  
