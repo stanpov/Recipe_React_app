@@ -8,20 +8,14 @@ const recepiShema = new mongoose.Schema({
     description: {
         type: String
     },
-    comments: [{
-      type: mongoose.Types.ObjectId,
-      ref: "user"
-    }],
+    comments: [],
     creator: {
         type: String
     },
     imageUrl: {
         type: String
     },
-    likes: [{
-        type: mongoose.Types.ObjectId,
-        ref: "user"
-    }]
+    likes: []
 })
 
 module.exports = mongoose.model('recepi',recepiShema)

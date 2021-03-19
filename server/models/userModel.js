@@ -13,10 +13,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    userRecepi: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Recepi'
-    }]
+    userRecepi: []
 
 
 })

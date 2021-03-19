@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 const Recipe = ({recipe}) => {
+  
     return (
         <div className="recipes__box">
             <img className="recipe__box-img" src={recipe.imageUrl} alt="repiceImg"/>
