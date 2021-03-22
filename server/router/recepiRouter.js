@@ -63,12 +63,28 @@ router.post('/like/:id',async(req,res)=>{
     
 })
 
-router.get('/recepi/:id',(req,res)=>{
+router.get('/recepi/:id', (req,res)=>{
     const id = req.params.id
-    recepiModel.findById(id).then(resp=>{
-        return res.json(resp)
+     recepiModel.findById(id).then(resp=>{
+        return res.status(200).json({result:resp,messagge:"this is all data"})
     })
     .catch(err=>console.log(err))
+})
+
+router.post('/addcomment/:id',async(req,res)=>{
+    const id = req.params.id;
+    const {comment} = req.body
+    if(comment.length === 0) {
+        return res.status(304).json({messagge: "cannot be empty string"})
+    } else {
+        let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [comment]}})
+        
+            let resultData = await recepiModel.findById(id)
+            return res.status(200).json({result:resultData,messagge: "comment successfully."})
+        
+        
+    }
+   
 })
 
 module.exports = router

@@ -3,11 +3,13 @@ import "./Home.css"
 import {Link} from 'react-router-dom';
 
 
+
 const Home = () => {
     return (
         <div className="container-fluid">
-               
+              
                  <div className="container-xl">
+                 
                      <div className="home-container">
                         <h1 className="user_grating">Hello    "usernameHere" !!!</h1>
 

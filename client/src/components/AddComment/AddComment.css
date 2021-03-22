@@ -1,0 +1,40 @@
+.add-comment-div {
+    position: absolute;
+    border: 1px solid yellow;
+    background-color: black;
+    opacity: 0.8;
+     margin-top: -450px;
+    
+    width: 600px;
+    height: 220px;
+   
+}
+
+.add-comment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    
+    
+   
+}
+
+.add-comment-textarea {
+    
+    height: 100px;
+    width: 400px;
+    margin: 0 auto;
+   
+}
+.add-form-paragraph {
+    font-size: 30px;
+   
+}
+.add-comment-btn {
+    background-color: #f3f3f3;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    padding: 3px 8px 3px 8px;
+    margin-top: 10px;
+}

@@ -8,7 +8,8 @@ import Login from './components/LoginPage/Login';
 import RecepiesPage from './components/RecepiesPage/RecepiesPage';
 import About from './components/About/About';
 import RepiceDetailsPage from './components/RecipeDetailsPage/RecipeDetailsPage';
-import CreateRecepi from './components/CreateRecepi/CreateRecepi'
+import CreateRecepi from './components/CreateRecepi/CreateRecepi';
+
 
 
 function App() {

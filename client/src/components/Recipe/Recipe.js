@@ -3,6 +3,7 @@ import "./Recipe.css"
 import {Link} from 'react-router-dom'
 
 
+
 const Recipe = ({recipe}) => {
   
     return (
@@ -15,9 +16,12 @@ const Recipe = ({recipe}) => {
                 <p className="recipes__likes">Likes: {recipe.likes.length}</p>
                 <p className="recipes__comments">Comments: {recipe.comments.length}</p>
             </div>
+            
                 <button key={recipe._id} className="recipes_buttons">
+                    
                 <Link className="recepi__link" to={{pathname: `recepi/${recipe._id}`,state:recipe}}>View Recipe</Link>
                 </button>
+                    
                 <p className="recipes__subtitle">Created by: <span className="creator-text">{recipe.creator}</span></p>
          </div>
     )
