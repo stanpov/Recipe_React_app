@@ -140,22 +140,9 @@ input[type="text"] {
     
     outline: none;
   }
-  .wrapper-comments {
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-    justify-content: space-between;
-    
-    text-align: left;
-    border: 1px solid #fff;
-    margin-top: 20px;
-  }
+ 
   
-  .svh-trash-button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-  }
+  
   
 
   

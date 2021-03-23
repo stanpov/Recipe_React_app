@@ -75,12 +75,12 @@ router.get('/recepi/:id', (req,res)=>{
 router.post('/addcomment/:id',async(req,res)=>{
     const id = req.params.id;
     const {comment} = req.body
-    const comentId = uniqid()
+    const commentId = uniqid()
     
     if(comment.length === 0) {
         return res.status(304).json({messagge: "cannot be empty string"})
     } else {
-        let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{id:comentId,comment:comment}]}})
+        let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{commentId:commentId,comment:comment}]}})
         
             let resultData = await recepiModel.findById(id)
             return res.status(200).json({result:resultData,messagge: "comment successfully."})
@@ -88,6 +88,24 @@ router.post('/addcomment/:id',async(req,res)=>{
         
     }
    
+})
+
+router.post('/removecomment/:id',async(req,res)=>{
+
+    try {
+        const recepiId=req.params.id;
+       
+        const idComment = req.body.idComment
+
+    let updated = await recepiModel.updateOne({_id: recepiId},{$pull: {comments: {commentId: `${idComment}` }}},{multi: true})
+    let resultData = await recepiModel.findById(recepiId)
+    return res.status(200).json({result:resultData,messagge:'comment deleted'})
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+    
 })
 
 module.exports = router
