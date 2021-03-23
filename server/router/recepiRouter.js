@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const recepiModel = require('../models/recepiModel');
+const uniqid = require('uniqid');
 
 
 router.get('/all',async(req,res)=>{
@@ -74,10 +75,12 @@ router.get('/recepi/:id', (req,res)=>{
 router.post('/addcomment/:id',async(req,res)=>{
     const id = req.params.id;
     const {comment} = req.body
+    const comentId = uniqid()
+    
     if(comment.length === 0) {
         return res.status(304).json({messagge: "cannot be empty string"})
     } else {
-        let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [comment]}})
+        let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{id:comentId,comment:comment}]}})
         
             let resultData = await recepiModel.findById(id)
             return res.status(200).json({result:resultData,messagge: "comment successfully."})

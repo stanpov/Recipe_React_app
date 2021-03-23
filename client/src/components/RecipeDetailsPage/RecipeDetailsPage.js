@@ -11,6 +11,7 @@ const RecipeDetailsPage = (props) => {
     const [createComment,setCreateComment] = useState(false);
     const [showAll,setShowAll] = useState(false);
     
+    
  
 
     const addLike = () => {
@@ -67,10 +68,13 @@ const RecipeDetailsPage = (props) => {
                     </div>
                 
                 </div>
-                {showAll ? recepi['comments'].map(r=>{
-                    let id = Math.random(100000)
+                {showAll ?  Object.entries(recepi['comments']).map(r=>{
+                    console.log(r[1])
                 return(
-                       <ShowComments  key={id} comment={r} />
+                    <div key={r[1].id}  className="show-all-comments">
+                       <ShowComments   comment={r[1].comment} />
+                    </div>
+                    
                    )
                }) : null}
                 {createComment ? <AddComment  closeComment={()=>setCreateComment(false)} recepiInfo={recepi} setRecepiInfo ={setRecepi} /> : null}
