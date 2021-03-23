@@ -1,0 +1,25 @@
+.show-all-comments {
+    
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    border: 2px solid #fff;
+    margin-top: 10px;
+    text-align:center;
+    width: 700px;
+    border-radius: 20%;
+    
+
+}
+.username-comentator{
+    
+    border-bottom: 1px dashed #fff;
+    
+}
+.username-comment {
+    font-weight: lighter;
+    font-style: italic;
+    font-size: 16px;
+    text-align:justify;
+
+}

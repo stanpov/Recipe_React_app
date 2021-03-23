@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import "./RecipeDetailsPage.css";
 import axios from 'axios'
-import AddComment from '../AddComment/AddComment'
+import AddComment from '../AddComment/AddComment';
+import ShowComments from '../ShowComments/ShowComments';
 
 const RecipeDetailsPage = (props) => {
     
     const activeRecipe = props.location.state
     const [recepi, setRecepi] = useState(activeRecipe);
     const [createComment,setCreateComment] = useState(false);
+    const [showAll,setShowAll] = useState(false);
     
  
 
@@ -15,6 +17,10 @@ const RecipeDetailsPage = (props) => {
         axios.post(`http://localhost:5000/recepies/like/${activeRecipe._id}`)
             .then(resp => setRecepi(resp.data.result))
 
+    }
+
+    const showAllComments = ()=>{
+        setShowAll(!showAll)
     }
 
  
@@ -56,12 +62,17 @@ const RecipeDetailsPage = (props) => {
                                 <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
                             </svg></button>
                         </div>
-                        <button className="active-recipe__show" >Show all comments</button>
+                        <button onClick={showAllComments} className="active-recipe__show" >{showAll ? "Hide all comments" : "Show all comments"}</button>
                         
-
-
                     </div>
+                
                 </div>
+                {showAll ? recepi['comments'].map(r=>{
+                    let id = Math.random(100000)
+                return(
+                       <ShowComments  key={id} comment={r} />
+                   )
+               }) : null}
                 {createComment ? <AddComment  closeComment={()=>setCreateComment(false)} recepiInfo={recepi} setRecepiInfo ={setRecepi} /> : null}
             </div>
 
