@@ -4,20 +4,24 @@ import axios from 'axios'
 import AddComment from '../AddComment/AddComment';
 import ShowComments from '../ShowComments/ShowComments';
 
+
 const RecipeDetailsPage = (props) => {
     
     const activeRecipe = props.location.state
     const [recepi, setRecepi] = useState(activeRecipe);
     const [createComment,setCreateComment] = useState(false);
     const [showAll,setShowAll] = useState(false);
-    console.log(recepi)
+    
+    
+    
     
  
 
     const addLike = () => {
+        
         axios.post(`http://localhost:5000/recepies/like/${activeRecipe._id}`)
             .then(resp => setRecepi(resp.data.result))
-
+        
     }
 
     const showAllComments = ()=>{
@@ -50,6 +54,7 @@ const RecipeDetailsPage = (props) => {
         
         <div className="container-fluid">
             <div className="container-xl">
+                
                 <div className="active-recipe">
                     <img className="active-recipe__img" src={recepi.imageUrl} alt="big_image" />
                     <div className="active-recipe-info">
@@ -77,8 +82,8 @@ const RecipeDetailsPage = (props) => {
                     
                 return(
                     
-                    <div key={r[1].id}  className="wrapper-comments" >
-                       <ShowComments   comment={r[1].comment} commentId={r[1].commentId} recepiId ={recepi._id} /> 
+                    <div key={r[1].commentId}  className="wrapper-comments" >
+                       <ShowComments   comment={r[1].comment} commentId={r[1].commentId} recepiId ={recepi._id} showAllComments={showAllComments} mainRecepi={recepi} setDeleteComent={setRecepi} /> 
                       
                     </div>
                     
@@ -87,6 +92,7 @@ const RecipeDetailsPage = (props) => {
                }) : null}
                
                 {createComment ? <AddComment  closeComment={()=>setCreateComment(false)} recepiInfo={recepi} setRecepiInfo ={setRecepi} /> : null}
+            
             </div>
 
         </div>
