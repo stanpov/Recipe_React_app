@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './ShowComments.css'
-import axios from 'axios'
+import * as recepiServices from '../../services/recepiServices/index'
 
 
 const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,setDeleteComent}) => {
@@ -11,19 +11,11 @@ const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,set
     
 
    const deleteComment =(idComment)=>{
-        const dataComent = {
-            idComment:idComment
-        }
-       // to fix after respons to show comment after delete
-        axios.post(`http://localhost:5000/recepies/removecomment/${recepiId}`,dataComent)
-        .then(resp=>setDeleteComent(resp.data.result))
-           
-
-            
-        
-           
-
+   
+        recepiServices.deleteOneComment(recepiId,idComment)
+        .then(resp=>setDeleteComent(resp.data.result))   
     }
+
     return (
         <div className="show-all-comments" id={commentId}  >
         <h5 className="username-comentator">user</h5> 

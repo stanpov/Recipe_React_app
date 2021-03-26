@@ -29,3 +29,10 @@ export const createOneRecepi = (title,imageUrl,description)=>{
     return   axios.post(`${baseURL}/create`,recepiData)
              .catch(err=>console.log(err))
 }
+export const deleteOneComment = (commentId,idComment)=>{
+    let recepiComent = {
+        idComment:idComment
+    }
+    return axios.post(`${baseURL}/removecomment/${commentId}`,recepiComent)
+    .catch(err=>console.log(err))
+}
