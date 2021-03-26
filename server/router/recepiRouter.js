@@ -6,12 +6,9 @@ const uniqid = require('uniqid');
 
 router.get('/all',async(req,res)=>{
     try {
-         recepiModel.find({},(err,result)=>{
-            if(err) {
-                return res.status(400).json('something wrong no data to show')
-            } 
-                 res.send(result)
-        })
+       let result =  await recepiModel.find({})
+       return  res.status(200).json(result)
+        
     } catch (error) {
         constole.log(error)
     }
@@ -64,12 +61,21 @@ router.post('/like/:id',async(req,res)=>{
     
 })
 
-router.get('/recepi/:id', (req,res)=>{
-    const id = req.params.id
-     recepiModel.findById(id).then(resp=>{
-        return res.status(200).json({result:resp,messagge:"this is all data"})
-    })
-    .catch(err=>console.log(err))
+router.get('/recepi/:id', async(req,res)=>{
+    try {
+        const id = req.params.id
+      let finded =  await recepiModel.findById(id)
+      if(!finded) {
+          return res.status(404).json({messagge:'No item with this id'})
+      } else {
+        return res.status(200).json(finded)
+      }
+     
+    } catch (error) {
+        return res.status(500).json({messagge: error})
+    }
+    
+    
 })
 
 router.post('/addcomment/:id',async(req,res)=>{
@@ -106,6 +112,16 @@ router.post('/removecomment/:id',async(req,res)=>{
     }
 
     
+})
+
+router.delete('/deleterecepi/:id',async(req,res)=>{
+    try {
+        const recepiId = req.params.id;
+        await recepiModel.deleteOne({_id: recepiId })
+        return res.status(200).json({messagge: "deleted successfully"})
+    } catch (error) {
+        return res.status(500).json({messagge: `${error}`})
+    }
 })
 
 module.exports = router

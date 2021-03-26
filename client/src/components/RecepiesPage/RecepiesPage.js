@@ -1,20 +1,19 @@
 import React,{useState,useEffect} from 'react'
-
 import "./RecepiesPage.css";
-import axios from 'axios';
 import Recipe from "../Recipe/Recipe"
 import Loader from '../Loader/Loader'
+import * as recepiServices from '../../services/recepiServices/index'
 
 const RecepiesPage = () => {
     const [recepies,setRecepies] = useState([]);
     const [loading,setLoading] = useState(true)
 
     useEffect(()=>{
-
-        axios.get("http://localhost:5000/recepies/all").then((response)=>{
+        recepiServices.getAll().then((response)=>{
             setRecepies(response.data);
-           setLoading(false)
+            setLoading(false)
         })
+        
         
     },[])
 

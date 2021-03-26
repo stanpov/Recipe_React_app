@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import "./CreateRecepi.css";
 import { useHistory } from 'react-router-dom';
-import axios from 'axios'
+import * as recepiServices from '../../services/recepiServices/index'
 
 const CreateRecepi = () => {
     const [title,setTitle] = useState('');
@@ -9,18 +9,13 @@ const CreateRecepi = () => {
     const [description,setDescription] = useState('');
     const History = useHistory();
 
-    let recepiData = {
-        title:title,
-        imageUrl:imageUrl,
-        description:description
-    }
 
     const createRecepi = ()=>{
-
-        axios.post('http://localhost:5000/recepies/create',recepiData)
-        .then(resp=>{
+        
+        recepiServices.createOneRecepi(title,imageUrl,description).then(()=>{
             History.push('/recepies')
         })
+        
     }
 
     return (

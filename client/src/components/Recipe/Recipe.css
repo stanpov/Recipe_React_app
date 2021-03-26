@@ -92,3 +92,26 @@ img {
       color: goldenrod;
       text-decoration: none;
   }
+
+  .recipes_delete_btn {
+    border: solid 2px black;
+    
+    background: transparent;
+    padding: 0.4rem 0.6rem;
+    margin: 0 0.2rem;
+    border-radius: 1px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-left: 0.7rem;
+  }
+
+  .recipess__buttons__holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .recipes_delete_btn:hover {
+    color: goldenrod;
+    text-decoration: none;
+  }
