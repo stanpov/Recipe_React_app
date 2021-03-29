@@ -124,4 +124,17 @@ router.delete('/deleterecepi/:id',async(req,res)=>{
     }
 })
 
+router.get('/ranklist',(req,res)=>{
+   
+    recepiModel.find({}).then(resp=>{
+        resp.sort((a,b)=>{
+           return (b.likes.length - a.likes.length) || (b.comments.length - a.comments.length)
+        })
+        return res.status(200).json(resp)
+    }).catch(err=>res.status(500).json(err))
+    
+      
+})
+
+
 module.exports = router

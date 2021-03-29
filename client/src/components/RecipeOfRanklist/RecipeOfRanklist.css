@@ -1,0 +1,18 @@
+.recipeRankHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+    border: 2px solid #fff;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color:rosybrown;
+    color: black;
+    font-style:normal;
+    font-weight: bold;
+ 
+}
+.rankImage {
+    width: 300px;
+}

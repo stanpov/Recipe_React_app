@@ -28,7 +28,7 @@ const CreateRecepi = () => {
                         <label className="create-recepi-lateb" htmlFor="imageUrl">ImageUrl:</label>
                         <input className="create-recepi-input" id="imageUrl" value={imageUrl} name="imageUrl" type="text" onChange={(e)=>setImageurl(e.target.value)} placeholder="Enter imageUrl" />
                         <label className="create-recepi-lateb" htmlFor="description">Description:</label>
-                        <textarea className="create-recepi-input" id="description" value={description} name="description"  type="field" onChange={(e)=>setDescription(e.target.value)} placeholder="Enter description" />
+                        <textarea className="create-recepi-input" id="description"  value={description} name="description"  type="field" onChange={(e)=>setDescription(e.target.value)} placeholder="Enter description" />
                     </form>
                     <button className="create-recepi-btn" onClick={createRecepi}>Create</button>
             </div>

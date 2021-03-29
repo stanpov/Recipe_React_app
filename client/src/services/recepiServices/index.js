@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const baseURL = 'http://localhost:5000/recepies'
 
 
@@ -34,5 +35,10 @@ export const deleteOneComment = (commentId,idComment)=>{
         idComment:idComment
     }
     return axios.post(`${baseURL}/removecomment/${commentId}`,recepiComent)
+    .catch(err=>console.log(err))
+}
+
+export const getRanklist = ()=>{
+    return axios.get(`${baseURL}/ranklist`)
     .catch(err=>console.log(err))
 }

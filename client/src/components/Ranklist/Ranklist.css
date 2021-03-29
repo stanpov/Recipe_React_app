@@ -1,0 +1,16 @@
+.top-recipes-header {
+    font-size: 70px;
+    color: goldenrod;
+    font-family: 'Londrina Shadow', cursive;
+    margin-bottom: 70px;
+}
+.ranklistHolder {
+    
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid black;
+    overflow: hidden;
+    margin: 0 auto;
+}

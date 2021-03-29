@@ -9,6 +9,7 @@ import RecepiesPage from './components/RecepiesPage/RecepiesPage';
 import About from './components/About/About';
 import RepiceDetailsPage from './components/RecipeDetailsPage/RecipeDetailsPage';
 import CreateRecepi from './components/CreateRecepi/CreateRecepi';
+import Ranklist from './components/Ranklist/Ranklist'
 
 
 
@@ -35,6 +36,7 @@ function App() {
         </Route>
         <Route path="/recepi/:id" exact component={RepiceDetailsPage}></Route>
         <Route path="/addrecepi" exact component={CreateRecepi}></Route>
+        <Route path="/ranklist" exact component={Ranklist}></Route>
       </Switch>
       
     </div>

@@ -11,7 +11,7 @@ const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,set
     
 
    const deleteComment =(idComment)=>{
-   
+    
         recepiServices.deleteOneComment(recepiId,idComment)
         .then(resp=>setDeleteComent(resp.data.result))   
     }
