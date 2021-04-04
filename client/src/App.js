@@ -9,12 +9,14 @@ import RecepiesPage from './components/RecepiesPage/RecepiesPage';
 import About from './components/About/About';
 import RepiceDetailsPage from './components/RecipeDetailsPage/RecipeDetailsPage';
 import CreateRecepi from './components/CreateRecepi/CreateRecepi';
-import Ranklist from './components/Ranklist/Ranklist'
+import Ranklist from './components/Ranklist/Ranklist';
+import {RecipeState} from './contexts/AuthContext'
 
 
 
 function App() {
   return (
+    <RecipeState>
     <Router>
     <div className="App">
       <Navigation />
@@ -41,6 +43,7 @@ function App() {
       
     </div>
     </Router>
+    </RecipeState>
   );
 }
 

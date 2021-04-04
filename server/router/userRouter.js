@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 
 
 
+
 router.post('/register',async (req,res)=>{
 
     let {username,password,email,rePassword} = req.body;
@@ -42,7 +43,7 @@ router.post('/register',async (req,res)=>{
         res.status(200).json({user,token})
 
     } catch (error) {
-        res.status(500).json({messagge:"something wrong"})
+        return  res.status(500).json({messagge:error});
     }
 })
 
@@ -59,11 +60,13 @@ router.post('/login',async (req,res)=>{
             return res.status(400).json({messagge:"wrong username or password"})
         } else {
             let token = jwt.sign({_id:user._id,username:user.username},config.secret)
-            res.status(200).json({result:user,token})
+             res.cookie(config.auth_cookie,token)
+            res.status(200).json({result:user,token});
+            
         }
       }
     } catch (error) {
-        res.status(500).json({messagge:"something wrong"})
+        return  res.status(500).json({messagge:error});
     }
 })
 

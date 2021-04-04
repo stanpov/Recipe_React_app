@@ -4,20 +4,21 @@ const recepiModel = require('../models/recepiModel');
 const uniqid = require('uniqid');
 
 
+
 router.get('/all',async(req,res)=>{
     try {
        let result =  await recepiModel.find({})
        return  res.status(200).json(result)
         
     } catch (error) {
-        constole.log(error)
+       return res.status(500).json({messagge:error});
     }
 })
 
 router.post('/create',async(req,res)=>{
      const {title,description,imageUrl} = req.body
     
-     let creator = "Yavor"
+     let creator = req.user.username
 
     
     try {
@@ -29,16 +30,17 @@ router.post('/create',async(req,res)=>{
         })
        
     } catch (error) {
-        
+      return  res.status(500).json({messagge:error});
     }
 })
 
 router.post('/like/:id',async(req,res)=>{
     const id = req.params.id
+    const userId = req.user._id
     
      try {
          // Have to fix this likes to recive only user parameters
-        let updated = await recepiModel.updateOne({_id: id},{$addToSet : {likes: [id]}})
+        let updated = await recepiModel.updateOne({_id: id},{$addToSet : {likes: [userId]}})
         
         if(!updated) {
             return res.status(404).json({messagge:'No items with this id'})
@@ -82,17 +84,22 @@ router.post('/addcomment/:id',async(req,res)=>{
     const id = req.params.id;
     const {comment} = req.body
     const commentId = uniqid()
-    
-    if(comment.length === 0) {
-        return res.status(304).json({messagge: "cannot be empty string"})
-    } else {
-        let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{commentId:commentId,comment:comment}]}})
-        
-            let resultData = await recepiModel.findById(id)
-            return res.status(200).json({result:resultData,messagge: "comment successfully."})
-        
-        
+    try {
+        if(comment.length === 0) {
+            return res.status(304).json({messagge: "cannot be empty string"})
+        } else {
+            let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{commentId:commentId,comment:comment}]}})
+            
+                let resultData = await recepiModel.findById(id)
+                return res.status(200).json({result:resultData,messagge: "comment successfully."})
+            
+            
+        }
+    } catch (error) {
+        return  res.status(500).json({messagge:error});
     }
+    
+    
    
 })
 
@@ -108,7 +115,7 @@ router.post('/removecomment/:id',async(req,res)=>{
     return res.status(200).json({result:resultData,messagge:'comment deleted'})
         
     } catch (error) {
-        console.log(error);
+        return  res.status(500).json({messagge:error});
     }
 
     

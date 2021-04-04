@@ -1,24 +1,36 @@
-import React,{useState} from 'react';
+import React,{useState,useContext, } from 'react';
+import {useHistory} from 'react-router-dom'
 import "./Login.css";
+import axios from 'axios';
+import {AuthContext} from '../../contexts/AuthContext'
+
+
 
 
 const Login = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
-
-    // let userdata = {
-    //     username: username,
-    //     password: password,
-        
-    // }
+    const {setUser} = useContext(AuthContext)
+    const History = useHistory();
+    
+    
+      
 
     const loginUser = () =>{
        
-        
-
-       
+      axios.post(`http://localhost:5000/user/login`,{
+          username,password
+      },{withCredentials: true}).then(resp=>{
+          setUser(resp.data.result.username)
+          History.push('/')
+      })
+           
         
     }
+
+    
+
+  
 
     return (
         <div className="container-fluid">

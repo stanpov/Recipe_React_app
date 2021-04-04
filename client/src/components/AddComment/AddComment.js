@@ -15,7 +15,7 @@ const AddComment = ({recepiInfo,setRecepiInfo,closeComment}) => {
             comment: comment
         }
 
-        axios.post(`http://localhost:5000/recepies/addcomment/${recepiInfo._id}`,commentData)
+        axios.post(`http://localhost:5000/recepies/addcomment/${recepiInfo._id}`,commentData,{withCredentials: true})
         .then(resp=>{
             if(resp.status === 304) {
                 // to show error message if comment empty.
