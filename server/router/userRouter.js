@@ -70,6 +70,17 @@ router.post('/login',async (req,res)=>{
     }
 })
 
+router.post('/logout',async(req,res,next)=>{
+    try {
+        await  res.clearCookie(config.auth_cookie);
+        return res.status(200).json({messagge:"User successfull logged out."})
+    } catch (error) {
+        return  res.status(500).json({messagge:error});
+    }
+    
+    
+})
+
 
 
 

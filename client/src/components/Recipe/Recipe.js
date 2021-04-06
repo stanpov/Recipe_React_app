@@ -33,7 +33,8 @@ const Recipe = ({recipe}) => {
                 <div className="recipess__buttons__holder">
                 <button key={recipe._id} className="recipes_buttons" >
                     
-                <Link className="recepi__link" to={`recepi/${recipe._id}`}>View Recipe</Link>
+                {user ? (<Link className="recepi__link" to={`recepi/${recipe._id}`}>View Recipe</Link>) :
+                (<Link className="recepi__link" to={`/login`}>Log in for more...</Link>)}
                 </button>
                 {user === recipe.creator ? <button className="recipes_delete_btn" onClick={()=>deleteYourRecepi(`${recipe._id}`)}><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>

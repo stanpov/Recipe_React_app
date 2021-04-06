@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import "./Ranklist.css";
+import Loader from '../Loader/Loader'
 import * as recipeServices from '../../services/recepiServices/index';
 
 
 
 const Ranklist = () => {
-    const [recipe, setRecipe] = useState([])
-    const [index,setIndex] = useState(0)
+    const [recipe, setRecipe] = useState([]);
+    const [index,setIndex] = useState(0);
+    const [loading,setLoading] = useState(true);
+
     
     
 
     useEffect(() => {
         recipeServices.getRanklist().then(resp => {
             setRecipe(resp.data[index])
+            setLoading(false)
         })
     },[index])
 
@@ -29,6 +33,7 @@ const Ranklist = () => {
         <div className="container-xl">
             <div className="container">
                 <h2 className="top-recipes-header">Top 5 Recipes:</h2>
+                {loading ? <Loader/> :
                     <div className="carousel">
                         <div
                         className="carouselInner"
@@ -56,7 +61,7 @@ const Ranklist = () => {
                                 </button> : null}
                             </div>
                         </div>
-                    </div>
+                    </div>}
              </div>
 
          </div>

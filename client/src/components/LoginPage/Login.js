@@ -1,8 +1,8 @@
 import React,{useState,useContext, } from 'react';
-import {useHistory} from 'react-router-dom'
 import "./Login.css";
 import axios from 'axios';
-import {AuthContext} from '../../contexts/AuthContext'
+import {useHistory} from 'react-router-dom';
+import {AuthContext} from '../../contexts/AuthContext';
 
 
 
@@ -12,25 +12,17 @@ const Login = () => {
     const [password,setPassword] = useState('');
     const {setUser} = useContext(AuthContext)
     const History = useHistory();
-    
-    
-      
-
     const loginUser = () =>{
        
-      axios.post(`http://localhost:5000/user/login`,{
-          username,password
-      },{withCredentials: true}).then(resp=>{
-          setUser(resp.data.result.username)
-          History.push('/')
-      })
-           
-        
-    }
-
-    
-
-  
+        axios.post(`http://localhost:5000/user/login`,{
+            username,password
+        },{withCredentials: true}).then(resp=>{
+            setUser(resp.data.result.username)
+            History.push('/')
+        })
+             
+          
+      }
 
     return (
         <div className="container-fluid">

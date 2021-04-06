@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
 import "./Navigation.css"
 import { Link } from 'react-router-dom'
+
 import {AuthContext} from '../../contexts/AuthContext'
 
 function Navigation() {
-    const {user} = useContext(AuthContext)
+
+    const {user,Logout} = useContext(AuthContext)
+   
     
     return (
         <>
@@ -15,7 +18,7 @@ function Navigation() {
             </li>
             
             <li className="nav-item">
-                <Link className="nav-link" to="/logout">Logout</Link>
+                <Link className="nav-link"  onClick={Logout} to="/">Logout</Link>
             </li>
             <li className="nav-item">
 
@@ -30,7 +33,7 @@ function Navigation() {
                 <Link className="nav-link" to="/register">Register</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link"  to="/login">Login</Link>
             </li>
             <li className="nav-item">
 
