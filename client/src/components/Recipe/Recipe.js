@@ -3,18 +3,29 @@ import "./Recipe.css"
 import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import * as recepiServices from '../../services/recepiServices/index'
-import {AuthContext} from '../../contexts/AuthContext'
+import {AuthContext} from '../../contexts/AuthContext';
+import {NotificationContext} from '../../contexts/NotificationContext'
 
 
 
 
 const Recipe = ({recipe}) => {
+    const {setNotifyMessagge,setNotify} = useContext(NotificationContext)
     const {user} = useContext(AuthContext)
     const History = useHistory()
 
     const deleteYourRecepi = (yourRecepiId)=>{
      recepiServices.deleteRecepi(yourRecepiId)
-        .then(History.push('/'))
+        .then((resp)=>{
+            setNotify(true)
+            setNotifyMessagge({nMessagge:resp.data.success,nCollor:'lightgreen'})
+            setTimeout(() => {
+                setNotify(false)
+                
+              }, 2000); 
+              History.push('/')
+        })
+       
         
     }
 

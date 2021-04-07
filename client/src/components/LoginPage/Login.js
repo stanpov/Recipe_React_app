@@ -3,6 +3,8 @@ import "./Login.css";
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import {AuthContext} from '../../contexts/AuthContext';
+import {NotificationContext} from '../../contexts/NotificationContext'
+
 
 
 
@@ -10,16 +12,38 @@ import {AuthContext} from '../../contexts/AuthContext';
 const Login = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
-    const {setUser} = useContext(AuthContext)
+    const {setUser} = useContext(AuthContext);
+    const {setNotifyMessagge,setNotify} = useContext(NotificationContext)
     const History = useHistory();
     const loginUser = () =>{
        
         axios.post(`http://localhost:5000/user/login`,{
             username,password
         },{withCredentials: true}).then(resp=>{
+           if(resp.data.messagge) {
+               setNotify(true)
+               setNotifyMessagge({nMessagge:resp.data.messagge,nCollor:'Red'})
+              return  setTimeout(() => {
+                setNotify(false)
+              }, 2000);  
+           } else {
+            setNotify(true)
+            setNotifyMessagge({nMessagge:resp.data.success,nCollor:'LightGreen'})
             setUser(resp.data.result.username)
-            History.push('/')
+             setTimeout(() => {
+                setNotify(false)
+                
+              }, 2000);  
+              History.push('/')
+           
+           }
+            
+        }).catch(err=>{
+            console.log(err)
         })
+
+
+       
              
           
       }

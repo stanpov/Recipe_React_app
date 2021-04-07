@@ -10,16 +10,20 @@ import About from './components/About/About';
 import RepiceDetailsPage from './components/RecipeDetailsPage/RecipeDetailsPage';
 import CreateRecepi from './components/CreateRecepi/CreateRecepi';
 import Ranklist from './components/Ranklist/Ranklist';
-import {RecipeState} from './contexts/AuthContext'
+import {RecipeState} from './contexts/AuthContext';
+import {NotificationState} from './contexts/NotificationContext'
 
 
 
 function App() {
   return (
     <RecipeState>
+    <NotificationState>
     <Router>
     <div className="App">
+      
       <Navigation />
+     
       <Switch>
         <Route path="/"  exact>
           <Home />
@@ -43,6 +47,7 @@ function App() {
       
     </div>
     </Router>
+    </NotificationState>
     </RecipeState>
   );
 }

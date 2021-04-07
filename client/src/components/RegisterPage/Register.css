@@ -5,14 +5,13 @@
   
 }
 .reg_h1 {
-  font-size: 65px;
-  margin-top: 20px;
+  font-size: 45px;
   font-family: 'Londrina Shadow', cursive;
   color: goldenrod;
 }
 .reg_paragraph {
   margin-bottom: 0px;
-font-size: 25px;
+font-size: 20px;
 font-weight: bold;
 color: goldenrod;;
 
@@ -37,7 +36,7 @@ color: goldenrod;;
 }
 .submit_btn {
   
-  margin: 20px auto;
+  margin: 10px auto;
   width: 100px;
   justify-content: center;
   padding: 10px;

@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 
 
 
-router.post('/register',async (req,res)=>{
+router.post('/register',async (req,res,next)=>{
 
     let {username,password,email,rePassword} = req.body;
     try {
@@ -32,7 +32,7 @@ router.post('/register',async (req,res)=>{
             errors.push('Password shoud be equal to confirm password')
         }
         if(errors.length > 0) {
-          return res.status(401).json({error: errors.join(',')});
+         return res.json({messagge: errors[0]})
         }
         let hashedPass =  bcrypt.hashSync(password,config.salt);
         password = hashedPass;
@@ -40,10 +40,10 @@ router.post('/register',async (req,res)=>{
         let user = await userModel.create({username,password,email})
 
         const token = jwt.sign({_id:user._id,username:user.username},config.secret)
-        res.status(200).json({user,token})
+        res.status(200).json({user,token,success:'Successfully created.'})
 
     } catch (error) {
-        return  res.status(500).json({messagge:error});
+        return  res.json({data:`error`,messagge:error.message});
     }
 })
 
@@ -53,29 +53,30 @@ router.post('/login',async (req,res)=>{
         let user = await  userModel.findOne({username})
 
       if(!user) {
-         return res.status(404).json({messagge:"user doesnt exist"})
+        return res.json({messagge: "user doesnt exist"})
       } else {
         let areEqual = await bcrypt.compare(password,user.password)
         if(!areEqual) {
-            return res.status(400).json({messagge:"wrong username or password"})
+            return res.json({messagge: "wrong username or password"})
+             
         } else {
             let token = jwt.sign({_id:user._id,username:user.username},config.secret)
              res.cookie(config.auth_cookie,token)
-            res.status(200).json({result:user,token});
+            res.status(200).json({result:user,token,success:'Successfully logged in.'});
             
         }
       }
     } catch (error) {
-        return  res.status(500).json({messagge:error});
+        return  res.json({data:`error`,messagge:error.message});
     }
 })
 
 router.post('/logout',async(req,res,next)=>{
     try {
         await  res.clearCookie(config.auth_cookie);
-        return res.status(200).json({messagge:"User successfull logged out."})
+        return res.status(200).json({success:"User successfull logged out."})
     } catch (error) {
-        return  res.status(500).json({messagge:error});
+        return  res.json({data:`error`,messagge:error.message});
     }
     
     

@@ -1,14 +1,14 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import "./AddComment.css";
 import axios from 'axios'
+import {NotificationContext} from '../../contexts/NotificationContext'
 
 const AddComment = ({recepiInfo,setRecepiInfo,closeComment}) => {
 
-    
+    const {setNotifyMessagge,setNotify} =useContext(NotificationContext)
     const [comment,setComment] = useState('');
+
      useState(recepiInfo);
-    
-    
 
     const addNewComment = ()=>{
         const commentData = {
@@ -17,20 +17,22 @@ const AddComment = ({recepiInfo,setRecepiInfo,closeComment}) => {
 
         axios.post(`http://localhost:5000/recepies/addcomment/${recepiInfo._id}`,commentData,{withCredentials: true})
         .then(resp=>{
-            if(resp.status === 304) {
-                // to show error message if comment empty.
+            if(resp.data.messagge) {
+                setNotify(true)
+                setNotifyMessagge({nMessagge:resp.data.messagge,nCollor:'Red'})
+                  setTimeout(() => {
+                    setNotify(false)
+                  }, 2000); 
                 setComment(comment)
                 
             } else {
-                
+                setNotify(true)
+                setNotifyMessagge({nMessagge:resp.data.success,nCollor:'LightGreen'})
+                setTimeout(() => {
+                    setNotify(false)
+                  }, 2000); 
                 setRecepiInfo(resp.data.result)
-                
-
-                
-
-               closeComment()
-               
-               
+                closeComment()
             }
         })
     }

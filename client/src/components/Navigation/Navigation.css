@@ -38,4 +38,16 @@
 .navigation_div ul li a:hover {
     color: #fff;
 }
+.notification {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 10px;
+    border-radius: 20%;
+    
+    
+    
+}
 

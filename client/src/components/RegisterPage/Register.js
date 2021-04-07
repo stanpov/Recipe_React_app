@@ -1,13 +1,17 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import "./Register.css";
 import { useHistory } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import {NotificationContext} from '../../contexts/NotificationContext';
 
 const Register = () => {
+    const {setNotifyMessagge,setNotify} = useContext(NotificationContext)
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [email,setEmail] = useState('');
     const [rePassword,setRePassword] = useState('');
+    
+    
     const History = useHistory();
 
     let userdata = {
@@ -21,7 +25,23 @@ const Register = () => {
 
         axios.post('http://localhost:5000/user/register',userdata)
         .then(resp=>{
-            History.push('/')
+            if(resp.data.messagge) {
+                setNotify(true)
+                setNotifyMessagge({nMessagge:resp.data.messagge,nCollor:'red'})
+                return setTimeout(() => {
+                    setNotify(false)
+                }, 2000);
+            } else {
+                setNotify(true)
+                setNotifyMessagge({nMessagge:resp.data.success,nCollor:'lightgreen'})
+                setTimeout(() => {
+                    setNotify(false)
+                    
+                  }, 2000); 
+                  History.push('/')
+            }
+            
+            
         })
         
         
