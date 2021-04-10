@@ -1,16 +1,32 @@
-import React, { useContext } from 'react'
-import "./Navigation.css"
+import React, { useContext, useEffect, } from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+import "./Navigation.css";
 import { Link } from 'react-router-dom';
-import {NotificationContext} from '../../contexts/NotificationContext'
-import {AuthContext} from '../../contexts/AuthContext'
+import {NotificationContext} from '../../contexts/NotificationContext';
+import {AuthContext} from '../../contexts/AuthContext';
 
+
+//navigation component holding information for user and notification.
 function Navigation() {
+    // const cookies = new Cookies()
+    const {user,Logout,setUser} = useContext(AuthContext);
+    const {notify,notifyMessagge} = useContext(NotificationContext);
+    
+   useEffect(()=>{
+    const cookies = new Cookies()
+       const token = cookies.get('AUTH_COOKIE')
+       if(!token) {
+           setUser(null);
+       } else {
+           axios.post('http://localhost:5000/user/verify',{
 
-    const {user,Logout} = useContext(AuthContext)
-    const {notify,notifyMessagge} = useContext(NotificationContext)
-    
-    
-   
+           },{withCredentials: true}).then(resp=>{
+               setUser(resp.data.result.username);
+           })
+       }
+      
+   },[setUser])
     
     return (
         <>

@@ -2,8 +2,10 @@ import React,{useState,useContext} from 'react'
 import "./CreateRecepi.css";
 import { useHistory } from 'react-router-dom';
 import * as recepiServices from '../../services/recepiServices/index';
-import {NotificationContext} from '../../contexts/NotificationContext'
+import {NotificationContext} from '../../contexts/NotificationContext';
+import isAuth from '../../hoc/isAuth'
 
+//this is createPage component for creating a new recepi.This component is holding information for global context values.
 const CreateRecepi = () => {
     const {setNotifyMessagge,setNotify} = useContext(NotificationContext)
     const [title,setTitle] = useState('');
@@ -54,4 +56,4 @@ const CreateRecepi = () => {
     )
 }
 
-export default CreateRecepi
+export default isAuth(CreateRecepi)

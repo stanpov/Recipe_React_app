@@ -82,6 +82,27 @@ router.post('/logout',async(req,res,next)=>{
     
 })
 
+router.post('/verify',async(req,res,next)=>{
+   try {
+    const token = req.cookies[config.auth_cookie]
+    
+ 
+    if(!token) {
+        return next()
+    }
+    jwt.verify(token,config.secret,function(err,decoded){
+        if(err) {
+            return next(err)
+        }
+       res.status(200).json({result:decoded})
+        
+    })
+   } catch (error) {
+    return  res.json({data:`error`,messagge:error.message});
+   }
+
+})
+
 
 
 

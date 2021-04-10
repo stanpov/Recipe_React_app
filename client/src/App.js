@@ -1,3 +1,4 @@
+
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
@@ -11,19 +12,20 @@ import RepiceDetailsPage from './components/RecipeDetailsPage/RecipeDetailsPage'
 import CreateRecepi from './components/CreateRecepi/CreateRecepi';
 import Ranklist from './components/Ranklist/Ranklist';
 import {RecipeState} from './contexts/AuthContext';
-import {NotificationState} from './contexts/NotificationContext'
+import {NotificationState} from './contexts/NotificationContext';
+
 
 
 
 function App() {
+  
   return (
     <RecipeState>
     <NotificationState>
     <Router>
     <div className="App">
-      
       <Navigation />
-     
+
       <Switch>
         <Route path="/"  exact>
           <Home />

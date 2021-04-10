@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import * as recepiServices from '../../services/recepiServices/index'
 import {AuthContext} from '../../contexts/AuthContext';
-import {NotificationContext} from '../../contexts/NotificationContext'
+import {NotificationContext} from '../../contexts/NotificationContext';
+
 
 
 
@@ -14,6 +15,8 @@ const Recipe = ({recipe}) => {
     const {user} = useContext(AuthContext)
     const History = useHistory()
 
+
+    //delete function which shows only if the usere is creator.It can delete only this recepi whis is creatd by the user.
     const deleteYourRecepi = (yourRecepiId)=>{
      recepiServices.deleteRecepi(yourRecepiId)
         .then((resp)=>{

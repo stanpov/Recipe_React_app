@@ -1,6 +1,8 @@
 import React,{createContext,useState} from 'react';
 import axios from 'axios';
 
+
+//global context for the user.It shows if the user is logged in or not.
  export const AuthContext = createContext();
  
  export const RecipeState = ({children})=>{
@@ -13,7 +15,7 @@ import axios from 'axios';
                 setUser(null)
             })
         }
-
+        
         
      
 

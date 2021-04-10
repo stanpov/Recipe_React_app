@@ -1,8 +1,11 @@
 import React,{useState,useContext} from 'react';
 import "./AddComment.css";
 import axios from 'axios'
-import {NotificationContext} from '../../contexts/NotificationContext'
+import {NotificationContext} from '../../contexts/NotificationContext';
+import isAuth from '../../hoc/isAuth'
 
+
+//add comments receive props from RecepiDetail Page.'closeComment is function which close the coment window','recepiInfo and setRecepiInfo' is the state of RecepiDetail Page
 const AddComment = ({recepiInfo,setRecepiInfo,closeComment}) => {
 
     const {setNotifyMessagge,setNotify} =useContext(NotificationContext)
@@ -51,4 +54,4 @@ const AddComment = ({recepiInfo,setRecepiInfo,closeComment}) => {
     )
 }
 
-export default AddComment
+export default isAuth(AddComment)

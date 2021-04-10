@@ -1,6 +1,8 @@
 import React from 'react';
 import "./About.css"
 
+
+//about page component
 const About = () => {
     return (
         <div className="container-fluid">

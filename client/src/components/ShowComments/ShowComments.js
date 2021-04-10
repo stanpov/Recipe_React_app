@@ -2,16 +2,18 @@ import React,{useState,useContext} from 'react';
 import './ShowComments.css'
 import * as recepiServices from '../../services/recepiServices/index'
 import {AuthContext} from '../../contexts/AuthContext'
+import isAuth from '../../hoc/isAuth'
 
-
-const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,setDeleteComent}) => {
+//This is the component which shows all the comments that we have.
+//useState is the state that we pass from RecepiPage to change the state in real time if user like or comment the recepi.
+const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,setDeleteComent,userComented}) => {
     const {user} = useContext(AuthContext)
-  
     useState(mainRecepi)
     
     
     
-
+    
+    //this delete the comment only if the user is creator
    const deleteComment =(idComment)=>{
     
         recepiServices.deleteOneComment(recepiId,idComment)
@@ -20,7 +22,7 @@ const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,set
 
     return (
         <div className="show-all-comments" id={commentId}  >
-        <h5 className="username-comentator">user</h5> 
+        <h5 className="username-comentator">{userComented}</h5> 
         <p className="username-comment">{comment}</p> 
           {user === mainRecepi.creator ? <div className="trash-holder" >
                     <button className="svh-trash-button" onClick={()=>deleteComment(commentId)}><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
@@ -34,7 +36,7 @@ const ShowComments = ({commentId,recepiId,showAllComments,mainRecepi,comment,set
     )
 }
 
-export default ShowComments
+export default isAuth(ShowComments)
 
 
 

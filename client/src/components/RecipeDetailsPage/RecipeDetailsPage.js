@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import "./RecipeDetailsPage.css";
 import AddComment from '../AddComment/AddComment';
 import ShowComments from '../ShowComments/ShowComments';
-import * as recepiServices from '../../services/recepiServices/index'
+import * as recepiServices from '../../services/recepiServices/index';
+import isAuth from '../../hoc/isAuth'
 
 
+//This is detail page which hold all information for the recepi.
 const RecipeDetailsPage = ({match}) => {
     
     
@@ -17,7 +19,7 @@ const RecipeDetailsPage = ({match}) => {
     
     
  
-
+//increase like numbers with one more
     const addLike = () => {
        
         recepiServices.giveOneLike(match.params.id) 
@@ -26,16 +28,18 @@ const RecipeDetailsPage = ({match}) => {
             })
         
     }
-
+    //this function show all comments and if they are show it can hide them again
     const showAllComments = ()=>{
         setShowAll(!showAll)
     }
+
+    
     const shareComment = ()=>{
 
         setCreateComment(true)
     }
 
-    
+    //this shows only one time the recepi with exact id which we take from match.params.id that we pass throw router in navigation.
     useEffect(() => {
 
         recepiServices.getOne(match.params.id).then(resp=>setRecepi(resp.data))
@@ -75,19 +79,21 @@ const RecipeDetailsPage = ({match}) => {
                     </div>
                 
                 </div>
+
+                {/* this maps all comments that recepi have and shows them in ShowComments component  */}
                 {showAll ?  Object.entries(recepi['comments']).map(r=>{
                     
                 return(
-                    
+                    // we pass all props to ShowComments componnet that we will need it.
                     <div key={r[1].commentId}  className="wrapper-comments" >
-                       <ShowComments   comment={r[1].comment} commentId={r[1].commentId} recepiId ={recepi._id} showAllComments={showAllComments} mainRecepi={recepi} setDeleteComent={setRecepi} /> 
-                      
+                       <ShowComments userComented = {r[1].username}  comment={r[1].comment} commentId={r[1].commentId} recepiId ={recepi._id} showAllComments={showAllComments} mainRecepi={recepi} setDeleteComent={setRecepi} /> 
+                        
                     </div>
                     
                     
                    )
                }) : null}
-               
+               {/* if create is true we show AddComment component and pass some of the props that we will need. */}
                 {createComment ? <AddComment  closeComment={()=>setCreateComment(false)} recepiInfo={recepi} setRecepiInfo ={setRecepi} /> : null}
             
             </div>
@@ -96,4 +102,4 @@ const RecipeDetailsPage = ({match}) => {
     )
 }
 
-export default RecipeDetailsPage
+export default isAuth(RecipeDetailsPage) 

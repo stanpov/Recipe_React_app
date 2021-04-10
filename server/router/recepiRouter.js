@@ -97,13 +97,14 @@ router.get('/recepi/:id', async(req,res)=>{
 router.post('/addcomment/:id',async(req,res)=>{
     const id = req.params.id;
     const {comment} = req.body
-    const commentId = uniqid()
+    const commentId = uniqid();
+    const username = req.user.username
     try {
         if(comment.length === 0) {
             return res.json({messagge: 'cannot be empty string'})
             
         } else {
-            let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{commentId:commentId,comment:comment}]}})
+            let updated = await recepiModel.updateOne({_id: id},{$push: {comments: [{commentId:commentId,comment:comment,username:username}]}})
             
                 let resultData = await recepiModel.findById(id)
                 return res.status(200).json({result:resultData,success:"Comment added."})

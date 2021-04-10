@@ -1,4 +1,4 @@
-import React,{useState,useContext, } from 'react';
+import React,{useState,useContext } from 'react';
 import "./Login.css";
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
@@ -9,6 +9,7 @@ import {NotificationContext} from '../../contexts/NotificationContext'
 
 
 
+//login page components.This component holding information from global context values
 const Login = () => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
@@ -42,11 +43,12 @@ const Login = () => {
             console.log(err)
         })
 
-
-       
-             
           
       }
+
+      
+
+      
 
     return (
         <div className="container-fluid">

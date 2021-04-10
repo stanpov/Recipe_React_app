@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import "./Ranklist.css";
 import Loader from '../Loader/Loader'
 import * as recipeServices from '../../services/recepiServices/index';
+import isAuth from '../../hoc/isAuth'
+
+
 
 
 
@@ -12,7 +15,7 @@ const Ranklist = () => {
 
     
     
-
+//taking information from server and show only 5 rcepis.Starts from index which is set to 0 default.
     useEffect(() => {
         recipeServices.getRanklist().then(resp => {
             setRecipe(resp.data[index])
@@ -20,11 +23,12 @@ const Ranklist = () => {
         })
     },[index])
 
+    //increase index + 1 and changing the state which depends on index
     const nextRecipe = ()=>{
         setIndex(prevstate=>prevstate + 1)
         
     }
-
+//decrease index + 1 and changing the state which depends on index
     const prevRecipe = ()=>{
         setIndex(prevstate=>prevstate - 1)
     }
@@ -68,4 +72,4 @@ const Ranklist = () => {
     )
 }
 
-export default Ranklist
+export default isAuth(Ranklist)

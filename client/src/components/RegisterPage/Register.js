@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {NotificationContext} from '../../contexts/NotificationContext';
 
+
+//This is the component for register page.
 const Register = () => {
     const {setNotifyMessagge,setNotify} = useContext(NotificationContext)
     const [username,setUsername] = useState('');

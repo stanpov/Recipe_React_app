@@ -3,7 +3,7 @@ import "./Home.css"
 import {Link} from 'react-router-dom';
 import {AuthContext} from '../../contexts/AuthContext'
 
-
+//this is home page component 
 const Home = () => {
     const {user} = useContext(AuthContext)
     
